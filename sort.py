@@ -11,3 +11,17 @@ class Sort(object):
                 i-=1
             elements[i + 1] = key
         return elements
+
+
+    @staticmethod
+    def selection_sort(elements):
+        size = len(elements)
+        for i in range(1, size):
+            min = i - 1
+            for j in range(i, size):
+                if elements[j] < elements[min]:
+                    min = j
+            aux = elements[i - 1]
+            elements[i - 1] = elements[min]
+            elements[min] = aux
+        return elements

@@ -6,6 +6,7 @@ SOLUTION_IDX = 1
 def main():
     print("Testing start!")
     test_insertion_sort()
+    test_selection_sort()
 
 def test_insertion_sort():
     print_start_test_msg('insertion_sort')
@@ -18,12 +19,26 @@ def test_insertion_sort():
 
     print_result(success)
 
+def test_selection_sort():
+    print_start_test_msg('selection_sort')
+    arrays = values_to_sort()
+    success = True
+    for array in arrays:
+        sorted = Sort.selection_sort(array[TO_SORT_IDX].copy())
+        success = sorted == array[SOLUTION_IDX]
+        print_solution(array[TO_SORT_IDX], sorted, array[SOLUTION_IDX])
+
+    print_result(success)
+
 
 def values_to_sort():
     arrays = []
     # tuple (array, solution)
     arrays.append(([10, 5, 1, 20, 17, 2, 1, 12], [1, 1, 2, 5, 10, 12, 17, 20]))
     arrays.append(([0, -1, 50, 22, 100, 101, 3, 20, 20, 20, 55, 0], [-1, 0, 0, 3, 20, 20, 20, 22, 50, 55, 100, 101]))
+    arrays.append(([],[]))
+    arrays.append(([0], [0]))
+    arrays.append(([81, 33,	98,	90,	22, 24,	40,	20,	92,	19, 15,	31,	10,	84,	67], [10, 15, 19, 20, 22, 24, 31, 33, 40, 67, 81, 84, 90, 92, 98]))
     return arrays
 
 def print_start_test_msg(method_name):
